@@ -16,6 +16,8 @@ namespace GameFramework
         {
             PlayerInput.AddKeyEvent(MoveRight, ConsoleKey.RightArrow);
             PlayerInput.AddKeyEvent(MoveLeft, ConsoleKey.LeftArrow);
+            PlayerInput.AddKeyEvent(MoveUp, ConsoleKey.UpArrow);
+            PlayerInput.AddKeyEvent(MoveDown, ConsoleKey.DownArrow);
         }
         private void MoveRight()
         {
@@ -31,6 +33,22 @@ namespace GameFramework
             if (X < 0)
             {
                 X++;
+            }
+        }
+        private void MoveUp()
+        {
+            Y--;
+            if (Y < 0)
+            {
+                Y++;
+            }
+        }
+        private void MoveDown()
+        {
+            Y++;
+            if (Y >= MyScene.SizeY)
+            {
+                Y--;
             }
         }
 
