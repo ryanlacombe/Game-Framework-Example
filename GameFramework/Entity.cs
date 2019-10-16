@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace GameFramework
 {
+    delegate void Event();
     class Entity
     {
-        private char _icon = ' ';
+        public Event OnStart;
+        public Event OnUpdate;
+        public Event OnDraw;
+
+        public char Icon { get; set; } = ' ';
+        public int X { get; set; } = 0;
 
         public Entity()
         {
@@ -16,19 +22,19 @@ namespace GameFramework
         }
         public Entity(char icon)
         {
-            _icon = icon;
+            Icon = icon;
         }
         public void Start()
         {
-
+            OnStart?.Invoke();
         }
         public void Update()
         {
-
+            OnUpdate?.Invoke();
         }
         public void Draw()
         {
-
+            OnDraw?.Invoke();
         }
     }
 }

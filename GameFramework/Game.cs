@@ -17,6 +17,12 @@ namespace GameFramework
         }
         public void Run()
         {
+            Entity player = new Entity('@');
+            player.X = 6;
+            _currentscene.AddEntity(player);
+            Entity enemy = new Entity('#');
+            enemy.X = 4;
+            _currentscene.AddEntity(enemy);
             _currentscene.Start();
 
             while (!gameOver)
