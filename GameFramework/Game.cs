@@ -17,11 +17,13 @@ namespace GameFramework
         }
         public void Run()
         {
-            Entity player = new Entity('@');
-            player.X = 6;
+            Player player = new Player('@');
+            player.X = 3;
+            player.Y = 2;
             _currentscene.AddEntity(player);
             Entity enemy = new Entity('#');
             enemy.X = 4;
+            enemy.Y = 4;
             _currentscene.AddEntity(enemy);
             _currentscene.Start();
 
@@ -29,7 +31,14 @@ namespace GameFramework
             {
                 _currentscene.Update();
                 _currentscene.Draw();
-                Console.ReadKey();
+                PlayerInput.ReadKey();
+            }
+        }
+        public Scene CurrentScene
+        {
+            get
+            {
+                return _currentscene;
             }
         }
     }

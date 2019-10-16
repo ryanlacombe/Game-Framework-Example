@@ -15,6 +15,8 @@ namespace GameFramework
 
         public char Icon { get; set; } = ' ';
         public int X { get; set; } = 0;
+        public int Y { get; set; } = 0;
+        private Scene _scene;
 
         public Entity()
         {
@@ -35,6 +37,17 @@ namespace GameFramework
         public void Draw()
         {
             OnDraw?.Invoke();
+        }
+        public Scene MyScene
+        {
+            set
+            {
+                _scene = value;
+            }
+            get
+            {
+                return _scene;
+            }
         }
     }
 }
