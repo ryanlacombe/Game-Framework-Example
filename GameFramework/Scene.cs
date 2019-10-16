@@ -20,7 +20,7 @@ namespace GameFramework
         public Scene()
         {
             _sizeX = 24;
-            _sizeY = 24;
+            _sizeY = 12;
         }
         public int SizeX
         {
@@ -64,12 +64,13 @@ namespace GameFramework
                     display[e.X, e.Y] = e.Icon;
                 }
             }
-            for (int o = 0; o < _sizeX; o++)
+            for (int o = 0; o < _sizeY; o++)
             {
-                for (int i = 0; i < _sizeY; i++)
+                for (int i = 0; i < _sizeX; i++)
                 {
                     Console.Write(display[i, o]);
                 }
+                Console.WriteLine();
             }
         }
         public void AddEntity(Entity entity)
