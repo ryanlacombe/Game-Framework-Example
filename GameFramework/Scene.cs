@@ -12,15 +12,17 @@ namespace GameFramework
         private List<Entity> _entities = new List<Entity>();
         private int _sizeX;
         private int _sizeY;
+        private bool[,] _collision;
+
         public Scene(int sizeX, int sizeY)
         {
             _sizeX = sizeX;
             _sizeY = sizeY;
+            _collision = new bool[_sizeX, _sizeY];
         }
-        public Scene()
+        public Scene() : this(24, 12)
         {
-            _sizeX = 24;
-            _sizeY = 12;
+            
         }
         public int SizeX
         {
@@ -45,9 +47,20 @@ namespace GameFramework
         }
         public void Update()
         {
+            _collision = new bool[_sizeX, _sizeY];
+
             foreach (Entity e in _entities)
             {
                 e.Update();
+                int x = (int)e.X;
+                int y = (int)e.Y;
+                if (e.X >= 0 && e.X < _sizeX && e.Y >= 0 && e.Y < _sizeY)
+                {
+                    if (!_collision[x, y])
+                    {
+                        _collision[x, y] = e.Solid;
+                    }
+                }
             }
         }
         public void Draw()
@@ -90,6 +103,17 @@ namespace GameFramework
                 e.MyScene = null;
             }
             _entities.Clear();
+        }
+        public bool GetCollision(float x, float y)
+        {
+            if (x >=0 && y >= 0 && x < _sizeX && y < _sizeY)
+            {
+                return _collision[(int)x, (int)y];
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

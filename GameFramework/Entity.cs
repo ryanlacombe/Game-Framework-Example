@@ -15,6 +15,7 @@ namespace GameFramework
         private Vector2 _location = new Vector2(0, 0);
 
         public char Icon { get; set; } = ' ';
+        public bool Solid { get; set; } = false;
         public float X
         {
             get

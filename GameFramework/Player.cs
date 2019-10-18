@@ -21,34 +21,34 @@ namespace GameFramework
         }
         private void MoveRight()
         {
-            X++;
-            if (X >= MyScene.SizeX)
-            {
-                X--;
-            }
-        }
-        private void MoveLeft()
-        {
-            X--;
-            if (X < 0)
+            
+            if (!MyScene.GetCollision(X + 1, Y))
             {
                 X++;
             }
         }
+        private void MoveLeft()
+        {
+            
+            if (!MyScene.GetCollision(X - 1, Y))
+            {
+                X--;
+            }
+        }
         private void MoveUp()
         {
-            Y--;
-            if (Y < 0)
+            
+            if (!MyScene.GetCollision(X, Y - 1))
             {
-                Y++;
+                Y--;
             }
         }
         private void MoveDown()
         {
-            Y++;
-            if (Y >= MyScene.SizeY)
+            
+            if (!MyScene.GetCollision(X, Y + 1))
             {
-                Y--;
+                Y++;
             }
         }
 

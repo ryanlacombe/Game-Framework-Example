@@ -17,6 +17,12 @@ namespace GameFramework
         }
         public void Run()
         {
+            _currentscene.AddEntity(new Wall(0,0));
+            _currentscene.AddEntity(new Wall(0, 1));
+            _currentscene.AddEntity(new Wall(1, 0));
+            _currentscene.AddEntity(new Wall(0, 2));
+            _currentscene.AddEntity(new Wall(2, 0));
+            _currentscene.AddEntity(new Wall(3, 0));
             Player player = new Player('@');
             player.X = 3;
             player.Y = 2;
