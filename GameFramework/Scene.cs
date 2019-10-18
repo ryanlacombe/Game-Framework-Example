@@ -61,7 +61,7 @@ namespace GameFramework
                 e.Draw();
                 if (e.X >= 0 && e.X < display.Length && e.Y >= 0 && e.Y < _sizeY)
                 {
-                    display[e.X, e.Y] = e.Icon;
+                    display[(int)e.X, (int)e.Y] = e.Icon;
                 }
             }
             for (int o = 0; o < _sizeY; o++)
