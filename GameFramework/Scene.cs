@@ -9,6 +9,9 @@ namespace GameFramework
 {
     class Scene
     {
+        public Event OnStart;
+        public Event OnUpdate;
+        public Event OnDraw;
         private List<Entity> _entities = new List<Entity>();
         private int _sizeX;
         private int _sizeY;
@@ -40,6 +43,8 @@ namespace GameFramework
         }
         public void Start()
         {
+            OnStart?.Invoke();
+
             foreach (Entity e in _entities)
             {
                 e.Start();
@@ -47,6 +52,8 @@ namespace GameFramework
         }
         public void Update()
         {
+            OnUpdate?.Invoke();
+
             _collision = new bool[_sizeX, _sizeY];
 
             foreach (Entity e in _entities)
@@ -65,6 +72,8 @@ namespace GameFramework
         }
         public void Draw()
         {
+            OnDraw?.Invoke();
+
             Console.Clear();
 
             char[,] display = new char[_sizeX, _sizeY];

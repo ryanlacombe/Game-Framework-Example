@@ -35,10 +35,9 @@ namespace GameFramework
 
             Player player = new Player();
             player.X = 3;
-            player.Y = 3;
-            Entity enemy = new Entity('e');      
-            enemy.X = 5;
-            enemy.Y = 1;
+            player.Y = 3;      
+            _enemy.X = 5;
+            _enemy.Y = 1;
             startingRoom.AddEntity(new Wall(0, 0));
             startingRoom.AddEntity(new Wall(0, 1));
             NorthRoom.AddEntity(new Wall(0, 2));
@@ -60,7 +59,7 @@ namespace GameFramework
 
             startingRoom.AddEntity(player);
 
-            NorthRoom.AddEntity(enemy);
+            NorthRoom.AddEntity(_enemy);
 
             startingRoom.Start();
 
@@ -92,6 +91,12 @@ namespace GameFramework
             {
                 return _currentscene;
             }
+        }
+        private Enemy _enemy = new Enemy();
+        
+        private void StartOtherRoom()
+        {
+
         }
     }
 }
