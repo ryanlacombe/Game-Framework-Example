@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace GameFramework
 {
-    class Wall : Entity
+    class Enemy : Entity
     {
-        public Wall(int x, int y)
+        public Enemy() : this('e')
         {
-            X = x;
-            Y = y;
-            Solid = true;
-            Icon = '█';
+
+        }
+        public Enemy(char icon) : base(icon)
+        {
+
         }
     }
 }
