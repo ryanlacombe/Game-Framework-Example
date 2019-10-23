@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Raylib;
+using RL = Raylib.Raylib;
 
 namespace GameFramework
 {
@@ -13,7 +15,8 @@ namespace GameFramework
 
         public Game()
         {
-            
+            RL.InitWindow(640, 480, "Small Game");
+            RL.SetTargetFPS(15);
         }
         //The Scene we are currently running
         public static Scene CurrentScene
@@ -109,14 +112,19 @@ namespace GameFramework
         public void Run()
         {
             Init();
-            PlayerInput.AddKeyEvent(Quit, ConsoleKey.Escape);
+            //PlayerInput.AddKeyEvent(Quit, ConsoleKey.Escape);
 
-            while (!gameOver)
+            while (!gameOver && !RL.WindowShouldClose())
             {
                 _currentscene.Update();
+                RL.BeginDrawing();
+                RL.ClearBackground(Color.DARKGRAY);
                 _currentscene.Draw();
+                RL.EndDrawing();
+
                 PlayerInput.ReadKey();
             }
+            RL.CloseWindow();
         }
         public void Quit()
         {

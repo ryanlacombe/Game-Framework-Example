@@ -14,10 +14,10 @@ namespace GameFramework
         }
         public Player(char icon) : base(icon)
         {
-            PlayerInput.AddKeyEvent(MoveRight, ConsoleKey.RightArrow);
-            PlayerInput.AddKeyEvent(MoveLeft, ConsoleKey.LeftArrow);
-            PlayerInput.AddKeyEvent(MoveUp, ConsoleKey.UpArrow);
-            PlayerInput.AddKeyEvent(MoveDown, ConsoleKey.DownArrow);
+            PlayerInput.AddKeyEvent(MoveRight, 100); //D
+            PlayerInput.AddKeyEvent(MoveLeft, 97); //A
+            PlayerInput.AddKeyEvent(MoveUp, 119); //W
+            PlayerInput.AddKeyEvent(MoveDown, 115); //S
         }
         private void MoveRight()
         {
