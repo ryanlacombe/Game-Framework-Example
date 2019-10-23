@@ -40,6 +40,8 @@ namespace GameFramework
             Room startingRoom = new Room(8, 6);
             Room otherRoom1 = new Room(12, 6);
             Room otherRoom2 = new Room(18, 22);
+            Room otherRoom3 = new Room(6, 6);
+            Room otherRoom4 = new Room(4, 18);
 
             Enemy enemy = new Enemy("tile191.png");
             void OtherRoomStart()
@@ -52,6 +54,8 @@ namespace GameFramework
 
             startingRoom.North = otherRoom1;
             startingRoom.South = otherRoom2;
+            startingRoom.East = otherRoom3;
+            startingRoom.West = otherRoom4;
             //Add Walls to the startingRoom
             startingRoom.AddEntity(new Wall(2, 2));
             //north walls
@@ -73,12 +77,18 @@ namespace GameFramework
             //east walls
             for (int i = 1; i < startingRoom.SizeY - 1; i++)
             {
-                startingRoom.AddEntity(new Wall(startingRoom.SizeX - 1, i));
+                if (i != 1)
+                {
+                    startingRoom.AddEntity(new Wall(startingRoom.SizeX - 1, i));
+                }
             }
             //west walls
             for (int i = 1; i < startingRoom.SizeY - 1; i++)
             {
-                startingRoom.AddEntity(new Wall(0, i));
+                if (i != 2)
+                {
+                    startingRoom.AddEntity(new Wall(0, i));
+                }
             }
             //Add Walls to the otherRoom
             //north walls
@@ -104,6 +114,7 @@ namespace GameFramework
             {
                 otherRoom1.AddEntity(new Wall(0, i));
             }
+            //ROOM 2
             //north walls
             for (int i = 0; i < otherRoom2.SizeX; i++)
             {
@@ -126,6 +137,54 @@ namespace GameFramework
             for (int i = 1; i < otherRoom2.SizeY - 1; i++)
             {
                 otherRoom2.AddEntity(new Wall(0, i));
+            }
+            //ROOM 3
+            //north walls
+            for (int i = 0; i < otherRoom3.SizeX; i++)
+            {
+                otherRoom3.AddEntity(new Wall(i, 0));               
+            }
+            //south walls
+            for (int i = 0; i < otherRoom3.SizeX; i++)
+            {
+                otherRoom3.AddEntity(new Wall(i, otherRoom3.SizeY - 1));
+            }
+            //east walls
+            for (int i = 1; i < otherRoom3.SizeY - 1; i++)
+            {
+                otherRoom3.AddEntity(new Wall(otherRoom3.SizeX - 1, i));
+            }
+            //west walls
+            for (int i = 1; i < otherRoom3.SizeY - 1; i++)
+            {
+                if (i != 1)
+                {
+                    otherRoom3.AddEntity(new Wall(0, i));
+                }
+            }
+            //ROOM 4
+            //north walls
+            for (int i = 0; i < otherRoom4.SizeX; i++)
+            {
+                otherRoom4.AddEntity(new Wall(i, 0));
+            }
+            //south walls
+            for (int i = 0; i < otherRoom4.SizeX; i++)
+            {
+                otherRoom4.AddEntity(new Wall(i, otherRoom4.SizeY - 1));
+            }
+            //east walls
+            for (int i = 1; i < otherRoom4.SizeY - 1; i++)
+            {
+                if (i != 2)
+                {
+                    otherRoom4.AddEntity(new Wall(otherRoom4.SizeX - 1, i));
+                }
+            }
+            //west walls
+            for (int i = 1; i < otherRoom4.SizeY - 1; i++)
+            {                                
+                    otherRoom4.AddEntity(new Wall(0, i));                
             }
 
             //Create a Player, position it, and add it to startingRoom

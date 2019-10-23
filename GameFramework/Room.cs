@@ -68,7 +68,7 @@ namespace GameFramework
             {
                 if (value != null)
                 {
-                    value._east = this;
+                    value._west = this;
                 }
                 _east = value;
             }
@@ -83,7 +83,7 @@ namespace GameFramework
             {
                 if (value != null)
                 {
-                    value._west = this;
+                    value._east = this;
                 }
                 _west = value;
             }
