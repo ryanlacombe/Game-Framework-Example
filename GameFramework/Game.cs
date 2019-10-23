@@ -44,13 +44,20 @@ namespace GameFramework
             Room otherRoom4 = new Room(4, 18);
 
             Enemy enemy = new Enemy("tile191.png");
-            void OtherRoomStart()
+            void OtherRoomStart1()
             {
                 enemy.X = 4;
                 enemy.Y = 4;
             }
+            Chests chest = new Chests("tile084.png");
+            void OtherRoomStart2()
+            {
+                chest.X = 2;
+                chest.Y = 2;
+            }
 
-            otherRoom1.OnStart += OtherRoomStart;
+            otherRoom1.OnStart += OtherRoomStart1;
+            otherRoom3.OnStart += OtherRoomStart2;
 
             startingRoom.North = otherRoom1;
             startingRoom.South = otherRoom2;
@@ -90,6 +97,7 @@ namespace GameFramework
                     startingRoom.AddEntity(new Wall(0, i));
                 }
             }
+            //ROOM 1
             //Add Walls to the otherRoom
             //north walls
             for (int i = 0; i < otherRoom1.SizeX; i++)
@@ -194,6 +202,7 @@ namespace GameFramework
             startingRoom.AddEntity(player);
             //Add enemy to otherRoom
             otherRoom1.AddEntity(enemy);
+            otherRoom3.AddEntity(chest);
 
             CurrentScene = startingRoom;
 
