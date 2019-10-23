@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Raylib;
+using RL = Raylib.Raylib;
 
 namespace GameFramework
 {
@@ -15,6 +17,7 @@ namespace GameFramework
         private Vector2 _location = new Vector2(0, 0);
 
         public char Icon { get; set; } = ' ';
+        public Texture2D Sprite { get; set; }
         public bool Solid { get; set; } = false;
         public float X
         {
@@ -47,6 +50,10 @@ namespace GameFramework
         public Entity(char icon)
         {
             Icon = icon;
+        }
+        public Entity(char icon, string imageName) : this(icon)
+        {
+            Sprite = RL.LoadTexture(imageName);
         }
         public void Start()
         {

@@ -14,6 +14,12 @@ namespace GameFramework
         {
 
         }
+        public Enemy(string imageName) : base('e', imageName)
+        {
+            _facing = Direction.North;
+            OnUpdate += Move;
+            OnUpdate += TouchPlayer;
+        }
         public Enemy(char icon) : base(icon)
         {
             _facing = Direction.North;

@@ -12,6 +12,8 @@ namespace GameFramework
     {
         public static bool gameOver = false;
         private static Scene _currentscene;
+        public static readonly int SizeX = 16;
+        public static readonly int SizeY = 16;
 
         public Game()
         {
@@ -38,7 +40,7 @@ namespace GameFramework
             Room startingRoom = new Room(8, 6);
             Room otherRoom = new Room(12, 6);
 
-            Enemy enemy = new Enemy();
+            Enemy enemy = new Enemy("tile191.png");
             void OtherRoomStart()
             {
                 enemy.X = 4;
@@ -99,7 +101,7 @@ namespace GameFramework
             }
 
             //Create a Player, position it, and add it to startingRoom
-            Player player = new Player();
+            Player player = new Player("tile190.png");
             player.X = 4;
             player.Y = 3;
             startingRoom.AddEntity(player);
@@ -118,7 +120,6 @@ namespace GameFramework
             {
                 _currentscene.Update();
                 RL.BeginDrawing();
-                RL.ClearBackground(Color.DARKGRAY);
                 _currentscene.Draw();
                 RL.EndDrawing();
 

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Raylib;
+using RL = Raylib.Raylib;
 
 namespace GameFramework
 {
@@ -107,6 +109,7 @@ namespace GameFramework
             OnDraw?.Invoke();
 
             Console.Clear();
+            RL.ClearBackground(Color.DARKGRAY);
 
             char[,] display = new char[_sizeX, _sizeY];
 
@@ -117,11 +120,15 @@ namespace GameFramework
                     display[(int)e.X, (int)e.Y] = e.Icon;
                 }
             }
-            for (int o = 0; o < _sizeY; o++)
+            for (int y = 0; y < _sizeY; y++)
             {
-                for (int i = 0; i < _sizeX; i++)
+                for (int x = 0; x < _sizeX; x++)
                 {
-                    Console.Write(display[i, o]);
+                    Console.Write(display[x, y]);
+                    foreach(Entity e in _tracking[x, y])
+                    {
+                        RL.DrawTexture(e.Sprite, x * Game.SizeX, y * Game.SizeY, Color.WHITE);
+                    }
                 }
                 Console.WriteLine();
             }
