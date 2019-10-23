@@ -26,7 +26,7 @@ namespace GameFramework
                 if (MyScene is Room)
                 {
                     Room Dest = (Room)MyScene;
-                    Travel(Dest.West);
+                    Travel(Dest.East);
                     X = 0;
                 }
             }
@@ -42,7 +42,7 @@ namespace GameFramework
                 if (MyScene is Room)
                 {
                     Room Dest = (Room)MyScene;
-                    Travel(Dest.East);
+                    Travel(Dest.West);
                     X = MyScene.SizeX - 1;
                 }
             }

@@ -36,7 +36,7 @@ namespace GameFramework
             }
             set
             {
-                if (value == null)
+                if (value != null)
                 {
                     value._south = this;
                 }
@@ -51,7 +51,7 @@ namespace GameFramework
             }
             set
             {
-                if (value == null)
+                if (value != null)
                 {
                     value._north = this;
                 }
@@ -66,9 +66,9 @@ namespace GameFramework
             }
             set
             {
-                if (value == null)
+                if (value != null)
                 {
-                    value._west = this;
+                    value._east = this;
                 }
                 _east = value;
             }
@@ -81,9 +81,9 @@ namespace GameFramework
             }
             set
             {
-                if (value == null)
+                if (value != null)
                 {
-                    value._east = this;
+                    value._west = this;
                 }
                 _west = value;
             }
