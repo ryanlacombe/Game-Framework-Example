@@ -14,11 +14,18 @@ namespace GameFramework
         private static Scene _currentscene;
         public static readonly int SizeX = 16;
         public static readonly int SizeY = 16;
+        private Camera3D _camera;
 
         public Game()
         {
             RL.InitWindow(640, 480, "Small Game");
             RL.SetTargetFPS(15);
+
+            Raylib.Vector3 cameraPosition = new Raylib.Vector3(0, -30, -50);
+            Raylib.Vector3 cameraTarget = new Raylib.Vector3(0, -10, -10);
+            Raylib.Vector3 cameraUp = new Raylib.Vector3(0, 0, 1);
+
+            _camera = new Camera3D(cameraPosition, cameraTarget, cameraUp);
         }
         //The Scene we are currently running
         public static Scene CurrentScene
@@ -215,8 +222,19 @@ namespace GameFramework
             while (!gameOver && !RL.WindowShouldClose())
             {
                 _currentscene.Update();
+
+                int mouseX = (RL.GetMouseX() - 320 / 16);
+                int mouseY = (RL.GetMouseY() - 240 / 32);
+                //Raylib.Vector3 cameraPosition = new Raylib.Vector3(-10, -10, -10);
+                //Raylib.Vector3 cameraTarget = new Raylib.Vector3(mouseX, 0, mouseY);
+                //Raylib.Vector3 cameraUp = new Raylib.Vector3(0, 0, 1);
+
+                //_camera = new Camera3D(cameraPosition, cameraTarget, cameraUp);
+
                 RL.BeginDrawing();
+                RL.BeginMode3D(_camera);
                 _currentscene.Draw();
+                RL.EndMode3D();
                 RL.EndDrawing();
 
                 PlayerInput.ReadKey();
