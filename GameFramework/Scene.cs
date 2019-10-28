@@ -17,6 +17,7 @@ namespace GameFramework
         private List<Entity> _entities = new List<Entity>();
         private List<Entity>[,] _tracking;
         private List<Entity> _removals = new List<Entity>();
+        private List<Entity> _additions = new List<Entity>();
         private int _sizeX;
         private int _sizeY;
         private bool[,] _collision;
@@ -69,6 +70,12 @@ namespace GameFramework
                     _tracking[x, y] = new List<Entity>();
                 }
             }
+            //Add all entities ready fo addition
+            foreach (Entity e in _additions)
+            {
+                _entities.Add(e);
+            }
+            _additions.Clear();
 
             //Remove all the Entities readied for removal
             foreach (Entity e in _removals)
@@ -139,7 +146,7 @@ namespace GameFramework
         }
         public void AddEntity(Entity entity)
         {
-            _entities.Add(entity);
+            _additions.Add(entity);
             entity.MyScene = this;
         }
         public void RemoveEntity(Entity entity)
