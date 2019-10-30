@@ -45,7 +45,15 @@ namespace GameFramework
 
         public float Magnitude()
         {
-            return (float)Math.Sqrt(x * x + y * y);
+            return (float)Math.Sqrt(x * x + y * y + z * z);
+        }
+        public float Distance(Vector3 other)
+        {
+            float diffX = x - other.x;
+            float diffY = y - other.y;
+            float diffZ = z - other.z;
+
+            return (float)Math.Sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ);
         }
         public void Normalize()
         {
@@ -80,7 +88,7 @@ namespace GameFramework
             Vector3 a = GetNormalized();
             Vector3 b = other.GetNormalized();
 
-
+            return (float)Math.Acos(a.Dot(b));
         }
         public override string ToString()
         {

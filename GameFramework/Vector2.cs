@@ -74,7 +74,11 @@ namespace GameFramework
         
         public float AngleBetween(Vector2 other)
         {
-            
+            Vector2 a = GetNormalized();
+            Vector2 b = other.GetNormalized();
+
+            float d = a.x * b.x + a.y * b.y;
+            return (float)Math.Acos(d);
         }
     }
 }
