@@ -49,5 +49,32 @@ namespace GameFramework
         {
             return new Vector2(lhs.x = rhs.x, lhs.x = rhs.y);
         }
+
+        public float Magnitude()
+        {
+            return (float)Math.Sqrt(x * x + y * y);
+        }
+        public void Normalize()
+        {
+            float m = Magnitude();
+            x /= m;
+            y /= m;
+        }
+        public Vector2 GetNormalized()
+        {
+            return (this / Magnitude());
+        }
+        public float Dot(Vector2 other)
+        {
+            float A = x * other.x;
+            float B = y * other.y;
+            float result = A + B;
+            return result;
+        }
+        
+        public float AngleBetween(Vector2 other)
+        {
+            
+        }
     }
 }
