@@ -35,5 +35,12 @@ namespace GameFramework
                 lhs.m31 * rhs.m12 + lhs.m32 * rhs.m22 + lhs.m33 * rhs.m32,
                 lhs.m31 * rhs.m13 + lhs.m32 * rhs.m23 + lhs.m33 * rhs.m33);
         }
+        public static Vector3 operator *(Matrix3 lhs, Vector3 rhs)
+        {
+            return new Vector3(
+                lhs.m11 * rhs.x + lhs.m12 * rhs.y + lhs.m13 * rhs.z,
+                lhs.m21 * rhs.x + lhs.m22 * rhs.y + lhs.m23 * rhs.z,
+                lhs.m31 * rhs.x + lhs.m32 * rhs.y + lhs.m33 * rhs.z);
+        }
     }
 }
